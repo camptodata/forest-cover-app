@@ -1,6 +1,8 @@
 FROM python:3.12-slim
 
-LABEL org.opencontainers.image.source="https://github.com/camptodata/forest-cover-app" \n      org.opencontainers.image.description="Streamlit app for forest cover type classification" \n      org.opencontainers.image.licenses="MIT"
+LABEL org.opencontainers.image.source="https://github.com/camptodata/forest-cover-app" \
+      org.opencontainers.image.description="Streamlit app for forest cover type classification" \
+      org.opencontainers.image.licenses="MIT"
 
 # uv is copied from its official image, pinned for reproducible builds.
 COPY --from=ghcr.io/astral-sh/uv:0.11.32 /uv /uvx /bin/
