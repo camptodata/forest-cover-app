@@ -1,4 +1,5 @@
-"""Train, save, load, and predict with the population-weighted XGBoost model.
+"""
+Train, save, load, and predict with the population-weighted XGBoost model.
 
 Categorical Wilderness_Area/Soil_Type are kept as plain integer codes
 (rather than pandas ``category`` dtype with ``enable_categorical=True``) so
@@ -21,7 +22,8 @@ from forestcover.features import ENGINEERED_FEATURE_COLUMNS
 
 
 def class_weights() -> dict[int, float]:
-    """Compute per-class sample weights as population share over train share.
+    """
+    Compute per-class sample weights as population share over train share.
 
     :return: mapping from Cover_Type (1..7) to its sample weight.
     """
@@ -29,7 +31,8 @@ def class_weights() -> dict[int, float]:
 
 
 def sample_weights_for(y: pd.Series) -> pd.Series:
-    """Map a Cover_Type series (values 1..7) to per-row sample weights.
+    """
+    Map a Cover_Type series (values 1..7) to per-row sample weights.
 
     :param y: series of Cover_Type values in 1..7.
     :return: series of sample weights aligned with ``y``'s index.
@@ -38,7 +41,8 @@ def sample_weights_for(y: pd.Series) -> pd.Series:
 
 
 def build_model(**overrides: object) -> xgb.XGBClassifier:
-    """Construct an XGBoost classifier with the project's default hyperparameters.
+    """
+    Construct an XGBoost classifier with the project's default hyperparameters.
 
     :param overrides: hyperparameters overriding the defaults in
         :data:`forestcover.config.XGB_PARAMS`.
@@ -51,7 +55,8 @@ def build_model(**overrides: object) -> xgb.XGBClassifier:
 def train_model(
     X: pd.DataFrame, y: pd.Series, weighted: bool = True, **overrides: object
 ) -> xgb.XGBClassifier:
-    """Fit an XGBoost classifier on engineered features.
+    """
+    Fit an XGBoost classifier on engineered features.
 
     :param X: engineered feature matrix (see :func:`forestcover.features.add_features`).
     :param y: Cover_Type target, values in 1..7 (internally zero-indexed for XGBoost).
@@ -67,7 +72,8 @@ def train_model(
 
 
 def save_model(model: xgb.XGBClassifier, path: str | Path) -> None:
-    """Save a fitted model to XGBoost's native JSON format.
+    """
+    Save a fitted model to XGBoost's native JSON format.
 
     :param model: a fitted :class:`xgboost.XGBClassifier`.
     :param path: destination file path (``.json``).
@@ -77,7 +83,8 @@ def save_model(model: xgb.XGBClassifier, path: str | Path) -> None:
 
 
 def load_model(path: str | Path) -> xgb.XGBClassifier:
-    """Load a model previously saved by :func:`save_model`.
+    """
+    Load a model previously saved by :func:`save_model`.
 
     :param path: path to the saved JSON model file.
     :return: the reconstructed classifier, ready for prediction.
@@ -96,7 +103,8 @@ def load_model(path: str | Path) -> xgb.XGBClassifier:
 
 
 def predict_proba(model: xgb.XGBClassifier, X: pd.DataFrame) -> np.ndarray:
-    """Predict per-class probabilities for one or more engineered observations.
+    """
+    Predict per-class probabilities for one or more engineered observations.
 
     :param model: a fitted classifier (from :func:`train_model` or :func:`load_model`).
     :param X: engineered feature dataframe (one or more rows).
@@ -106,7 +114,8 @@ def predict_proba(model: xgb.XGBClassifier, X: pd.DataFrame) -> np.ndarray:
 
 
 def predict_cover_type(model: xgb.XGBClassifier, X: pd.DataFrame) -> np.ndarray:
-    """Predict the most likely Cover_Type (1..7) for one or more observations.
+    """
+    Predict the most likely Cover_Type (1..7) for one or more observations.
 
     :param model: a fitted classifier.
     :param X: engineered feature dataframe.

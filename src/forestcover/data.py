@@ -1,4 +1,5 @@
-"""Load, validate, decode, and filter the Forest Cover Type dataset.
+"""
+Load, validate, decode, and filter the Forest Cover Type dataset.
 
 These are the "data importing / filtering" functions the course brief asks
 to be tested: they are pure, side-effect free (besides reading a file) and
@@ -40,7 +41,8 @@ REQUIRED_COLUMNS = REQUIRED_BASE_COLUMNS + WILDERNESS_COLUMNS + SOIL_COLUMNS
 
 
 def load_raw(path: str | Path) -> pd.DataFrame:
-    """Read the raw Forest Cover Type CSV file.
+    """
+    Read the raw Forest Cover Type CSV file.
 
     :param path: path to the CSV file.
     :return: the raw dataframe, unmodified.
@@ -54,7 +56,8 @@ def load_raw(path: str | Path) -> pd.DataFrame:
 
 
 def validate_schema(df: pd.DataFrame) -> None:
-    """Check that a dataframe matches the expected Forest Cover Type schema.
+    """
+    Check that a dataframe matches the expected Forest Cover Type schema.
 
     :param df: dataframe to validate.
     :return: None if the dataframe is valid.
@@ -93,7 +96,8 @@ def validate_schema(df: pd.DataFrame) -> None:
 
 
 def decode_categories(df: pd.DataFrame) -> pd.DataFrame:
-    """Collapse the one-hot Wilderness/Soil columns into readable categories.
+    """
+    Collapse the one-hot Wilderness/Soil columns into readable categories.
 
     Adds integer ``Wilderness_Area`` (1..4) and ``Soil_Type`` (1..40) columns
     plus human-readable ``Wilderness_Name`` and ``Cover_Name`` columns. The
@@ -116,7 +120,8 @@ def decode_categories(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def load_dataset(path: str | Path) -> pd.DataFrame:
-    """Load, validate, and decode the Forest Cover Type dataset in one call.
+    """
+    Load, validate, and decode the Forest Cover Type dataset in one call.
 
     This is the function the Streamlit app caches with ``st.cache_data``.
 
@@ -131,7 +136,8 @@ def load_dataset(path: str | Path) -> pd.DataFrame:
 
 
 def class_distribution(df: pd.DataFrame) -> pd.Series:
-    """Compute the row count per Cover_Type value.
+    """
+    Compute the row count per Cover_Type value.
 
     :param df: dataframe containing a ``Cover_Type`` column.
     :return: a series indexed by Cover_Type (1..7) with row counts, sorted by index.
@@ -147,7 +153,8 @@ def filter_observations(
     slope_range: tuple[int, int] | None = None,
     soil_types: list[int] | None = None,
 ) -> pd.DataFrame:
-    """Filter observations by cover type, wilderness area, elevation, slope, and soil type.
+    """
+    Filter observations by cover type, wilderness area, elevation, slope, and soil type.
 
     Every criterion is independent and combined with logical AND. ``None``
     means "no filter" on that criterion; an empty list means "select no

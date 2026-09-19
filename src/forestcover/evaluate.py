@@ -1,4 +1,5 @@
-"""CLI entry point: stratified 5-fold CV evaluation, written to models/metrics.json.
+"""
+CLI entry point: stratified 5-fold CV evaluation, written to models/metrics.json.
 
 Compares two models:
 
@@ -45,7 +46,8 @@ from forestcover.model import class_weights, sample_weights_for, train_model
 
 
 def _cv_evaluate(X: pd.DataFrame, y: pd.Series, weighted: bool, feature_cols: list[str]) -> dict:
-    """Run stratified k-fold CV and aggregate plain/weighted metrics.
+    """
+    Run stratified k-fold CV and aggregate plain/weighted metrics.
 
     :param X: feature matrix (raw or engineered).
     :param y: Cover_Type target, values in 1..7.
@@ -98,7 +100,8 @@ def _cv_evaluate(X: pd.DataFrame, y: pd.Series, weighted: bool, feature_cols: li
 def _fit(
     X_tr: pd.DataFrame, y_tr: pd.Series, weighted: bool, feature_cols: list[str]
 ) -> xgb.XGBClassifier:
-    """Fit one fold's model with either baseline or project hyperparameters.
+    """
+    Fit one fold's model with either baseline or project hyperparameters.
 
     :param X_tr: training feature slice.
     :param y_tr: training target slice, values in 1..7.

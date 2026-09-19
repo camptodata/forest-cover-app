@@ -1,4 +1,5 @@
-"""Forest Cover Type classification package.
+"""
+Forest Cover Type classification package.
 
 Ports the data loading, feature engineering, and modelling logic of the
 original Machine Learning II group project (Kaggle "Forest Cover Type

@@ -1,4 +1,5 @@
-"""Central configuration: paths, class names, and model hyperparameters.
+"""
+Central configuration: paths, class names, and model hyperparameters.
 
 Every path is resolved relative to the repository root so the same code
 works both on a local checkout and inside the Docker image, where the
