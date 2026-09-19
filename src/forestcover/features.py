@@ -1,4 +1,5 @@
-"""Feature engineering, ported from the original notebook's ``add_features``.
+"""
+Feature engineering, ported from the original notebook's ``add_features``.
 
 The port keeps every engineered feature from CELL 22 of the original
 Colab notebook (see ``reference/notebook_dump.md``) but cleans up naming and
@@ -96,7 +97,8 @@ ENGINEERED_FEATURE_COLUMNS: list[str] = [
 
 
 def add_features(df: pd.DataFrame) -> pd.DataFrame:
-    """Engineer geospatial, solar, and soil-derived features.
+    """
+    Engineer geospatial, solar, and soil-derived features.
 
     Expects a dataframe already decoded by :func:`forestcover.data.decode_categories`
     (i.e. with integer ``Wilderness_Area`` and ``Soil_Type`` columns rather

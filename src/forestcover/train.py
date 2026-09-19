@@ -1,4 +1,5 @@
-"""CLI entry point: train the final model and write it to models/.
+"""
+CLI entry point: train the final model and write it to models/.
 
 Usage::
 
