@@ -12,5 +12,3 @@ notebooks
 __pycache__
 *.pyc
 .mypy_cache
-machine-local
-README.md.bak
